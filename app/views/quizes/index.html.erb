@@ -1,0 +1,25 @@
+  <% @quizes.each do |quize| %>
+      <h3>  <%= quize.name %></h3>
+      <hr>
+      <ol class="questions">
+      <% quize.questions.each do |question| %>
+        <li>
+          <%= question.name %>
+          <ol class="answers">
+            <% question.options.each do |answer| %>
+              <li> <%= answer.name %></li>
+            <% end %>
+          </ol>
+        </li>
+      <% end %>
+      </ol>
+       <%= link_to 'Show', quize %>
+       <%= link_to 'Edit', edit_quize_path(quize) if(can? :update, quize) %>
+       <%= link_to 'Destroy', quize, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </tr>
+    <% end %>
+<hr>
+<% if can? :create, @article %>
+  <%= link_to 'New Quize', new_quize_path,class: 'btn btn-primary' %>
+<% end %>
+

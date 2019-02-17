@@ -1,0 +1,9 @@
+<div class="form-group fieldse options-hash">
+  <%= f.label :name, "Answer" %> <br>
+  <%= f.text_field :name %>
+  <%= f.check_box :is_correct, class: 'is_correct' %> 
+  <%= f.label :is_correct%>
+  <%= f.check_box :_destroy %>
+  <%#= f.label :_destroy, "remove" %>
+  <%= link_to "remove", 'javascript:void(0);', class: "remove_fields" %>
+</div>

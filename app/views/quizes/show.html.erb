@@ -1,0 +1,17 @@
+<h1><%= @quize.name %></h1>
+
+<ol class="questions">
+<% @quize.questions.each do |question| %>
+  <li>
+    <%= question.name %>
+    <ol class="answers">
+      <% question.options.each do |answer| %>
+        <li><input type="radio" id="" name="<%=question.id%>" value="[<%=question.id%>,<%=answer.id%>]"> <%= answer.name %></li>
+      <% end %>
+    </ol>
+  </li>
+<% end %>
+</ol>
+
+<%= link_to 'Edit', edit_quize_path(@quize) if(can? :update, @quize)%> |
+<%= link_to 'Back', quizes_path %>
