@@ -1,5 +1,6 @@
 class Option < ApplicationRecord
   belongs_to :question
+  has_one :answer, :dependent => :destroy
   validates :name, presence: true
   # validates :is_correct, presence: true
   # has_one :question, through: :answer,:dependent => :destroy
