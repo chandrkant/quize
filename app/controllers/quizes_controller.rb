@@ -34,7 +34,7 @@ class QuizesController < ApplicationController
     @quize.user_id = current_user.id
     respond_to do |format|
       if @quize.save
-        format.html { redirect_to @quize, notice: 'Quize was successfully created.' }
+        format.html { redirect_to edit_quize_path(@quize), notice: 'Quize was successfully created.' }
         format.json { render :show, status: :created, location: @quize }
       else
         format.html { render :new }
@@ -75,6 +75,6 @@ class QuizesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quize_params
-      params.require(:quize).permit(:name, :user_id,questions_attributes: [:id,:name, :_destroy, options_attributes: [:id,:name,:_destroy, :is_correct]] )
+      params.require(:quize).permit(:name, :user_id, questions_attributes: [:id,:name, :answer,:_destroy, options_attributes: [:id,:name,:_destroy, :is_correct]] )
     end
 end
